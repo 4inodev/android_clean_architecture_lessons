@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
 
-    private val viewModel by viewModel<MainViewModel>()
+//    private val viewModel by viewModel<MainViewModel>()
     private lateinit var dataTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
