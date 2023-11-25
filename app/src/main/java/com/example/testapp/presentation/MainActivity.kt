@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel.resultLiveData.observe(this) {
-            dataTextView.text = it
-        }
+//        viewModel.resultLiveData.observe(this) {
+//            dataTextView.text = it
+//        }
     }
 
     private fun initOnClickListeners() {
