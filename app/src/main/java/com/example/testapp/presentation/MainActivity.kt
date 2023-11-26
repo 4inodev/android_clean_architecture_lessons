@@ -1,35 +1,38 @@
 package com.example.testapp.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.testapp.App
 import com.example.testapp.R
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-
-//    private val viewModel by viewModel<MainViewModel>()
+    @Inject lateinit var viewModelFactory: MainViewModelFactory
+    private lateinit var viewModel: MainViewModel
     private lateinit var dataTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("AAA", "Activity created")
+        (applicationContext as App).appComponent.inject(this)
 
         dataTextView = findViewById(R.id.textViewData)
         initViewModel()
         initOnClickListeners()
+
     }
 
     private fun initViewModel() {
-//        viewModel.resultLiveData.observe(this) {
-//            dataTextView.text = it
-//        }
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.resultLiveData.observe(this) {
+            dataTextView.text = it
+        }
     }
 
     private fun initOnClickListeners() {
