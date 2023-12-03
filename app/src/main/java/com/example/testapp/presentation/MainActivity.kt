@@ -8,18 +8,18 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapp.R
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-
-
-    private val viewModel by viewModel<MainViewModel>()
+    private lateinit var viewModel: MainViewModel
     private lateinit var dataTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("AAA", "Activity created")
+
+        viewModel = ViewModelProvider(this, MainViewModelFactory(this))
+            .get(MainViewModel::class.java)
 
         dataTextView = findViewById(R.id.textViewData)
         initViewModel()

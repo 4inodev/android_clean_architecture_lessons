@@ -49,8 +49,4 @@ dependencies {
     implementation(project(mapOf("path" to ":domain")))
     
     //external libraries
-    val koinVersion = "3.5.0"
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("io.insert-koin:koin-android:$koinVersion")
-    implementation("io.insert-koin:koin-test:$koinVersion")
 }
